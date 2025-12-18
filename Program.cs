@@ -11,7 +11,15 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("https://liftledger.fit")
+        policy.WithOrigins(
+                "https://liftledger.fit",
+                "http://localhost:3000",
+                "http://localhost:5173",
+                "http://localhost:8080",
+                "http://localhost:4200",
+                "https://localhost:3000",
+                "https://localhost:5173"
+              )
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
