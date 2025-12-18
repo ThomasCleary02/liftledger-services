@@ -10,6 +10,7 @@ publish/
 *.suo
 *.userosscache
 *.sln.docstates
+.vscode/
 
 # VS Code
 .vscode/*
@@ -21,6 +22,7 @@ appsettings.*.json
 !appsettings.json
 !appsettings.Production.json
 *.publishsettings
+*.PublishSettings
 
 # Logs
 *.log

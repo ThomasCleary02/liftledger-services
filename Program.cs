@@ -11,9 +11,10 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("https://your-frontend-domain.com")
+        policy.WithOrigins("https://liftledger.fit")
               .AllowAnyMethod()
-              .AllowAnyHeader();
+              .AllowAnyHeader()
+              .AllowCredentials();
     });
 });
 
@@ -34,12 +35,13 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/error");
 }
 
+// CORS must be before UseHttpsRedirection to handle preflight requests
+app.UseCors();
+
 app.UseHttpsRedirection();
 
 // Health check endpoint
 app.MapHealthChecks("/health");
-
-app.UseCors();
 
 app.MapControllers();
 
