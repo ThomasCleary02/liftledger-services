@@ -20,6 +20,7 @@ publish/
 appsettings.*.json
 !appsettings.json
 !appsettings.Production.json
+*.publishsettings
 
 # Logs
 *.log
