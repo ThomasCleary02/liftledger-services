@@ -1,0 +1,63 @@
+POST http://localhost:5068/api/insights/progress
+Content-Type: application/json
+
+{
+  "exercise": "Bench Press",
+  "history": [
+    { "date": "2024-12-01", "value": 135 },
+    { "date": "2025-01-10", "value": 155 },
+    { "date": "2025-03-16", "value": 165 }
+  ],
+  "metric": "weight"
+}
+
+### Test: Single Point
+POST http://localhost:5068/api/insights/progress
+Content-Type: application/json
+
+{
+  "exercise": "Squat",
+  "history": [
+    { "date": "2025-03-16", "value": 225 }
+  ],
+  "metric": "weight"
+}
+
+### Test: Regression
+POST http://localhost:5068/api/insights/progress
+Content-Type: application/json
+
+{
+  "exercise": "Deadlift",
+  "history": [
+    { "date": "2024-12-01", "value": 315 },
+    { "date": "2025-03-16", "value": 295 }
+  ],
+  "metric": "weight"
+}
+
+### Test: No Change
+POST http://localhost:5068/api/insights/progress
+Content-Type: application/json
+
+{
+  "exercise": "Overhead Press",
+  "history": [
+    { "date": "2024-12-01", "value": 135 },
+    { "date": "2025-03-16", "value": 135 }
+  ],
+  "metric": "weight"
+}
+
+### Test: Early Logging (2 days in a row, same weight)
+POST http://localhost:5068/api/insights/progress
+Content-Type: application/json
+
+{
+  "exercise": "Bench Press",
+  "history": [
+    { "date": "2025-03-15", "value": 135 },
+    { "date": "2025-03-16", "value": 135 }
+  ],
+  "metric": "weight"
+}
